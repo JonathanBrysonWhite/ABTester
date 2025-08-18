@@ -3,38 +3,69 @@
 import React from 'react';
 
 interface SnippetABProps {
-  left: string;      // URL or path to left snippet
-  right: string;     // URL or path to right snippet
+  left: string;             // absolute/relative URL in /public
+  right: string;
   onSelect: (choice: 0 | 1) => void;
+  heightClass?: string;     // optional: override height (e.g., "h-[520px]")
 }
 
-const SnippetAB: React.FC<SnippetABProps> = ({ left, right, onSelect }) => {
+const SnippetAB: React.FC<SnippetABProps> = ({ left, right, onSelect, heightClass = 'h-64 md:h-96' }) => {
   return (
-    <div className="flex flex-col md:flex-row gap-4 w-full max-w-5xl">
-      {/* Left snippet */}
-      <div
-        className="flex-1 border border-gray-300 rounded overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
-        onClick={() => onSelect(0)}
-      >
-        <iframe
-          src={left}
-          title="Left Snippet"
-          className="w-full h-64 md:h-96"
-          frameBorder={0}
-        />
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-6xl">
+      {/* LEFT */}
+      <div className="flex flex-col border border-gray-300 rounded-lg overflow-hidden bg-white shadow-sm">
+        <div className="relative">
+          {/* Keep iframe interactive (NO pointer-events: none) */}
+          <iframe
+            src={left}
+            title="Left Snippet"
+            className={`w-full ${heightClass}`}
+            frameBorder={0}
+          />
+          {/* Optional: tiny open-in-new-tab helper in corner */}
+          <a
+            href={left}
+            target="_blank"
+            rel="noreferrer"
+            className="absolute top-2 right-2 text-xs bg-white/90 border px-2 py-1 rounded hover:bg-white"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Open
+          </a>
+        </div>
+        <button
+          className="w-full py-2 font-semibold bg-indigo-600 text-white hover:bg-indigo-700 transition-colors"
+          onClick={() => onSelect(0)}
+        >
+          Choose Left
+        </button>
       </div>
 
-      {/* Right snippet */}
-      <div
-        className="flex-1 border border-gray-300 rounded overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
-        onClick={() => onSelect(1)}
-      >
-        <iframe
-          src={right}
-          title="Right Snippet"
-          className="w-full h-64 md:h-96"
-          frameBorder={0}
-        />
+      {/* RIGHT */}
+      <div className="flex flex-col border border-gray-300 rounded-lg overflow-hidden bg-white shadow-sm">
+        <div className="relative">
+          <iframe
+            src={right}
+            title="Right Snippet"
+            className={`w-full ${heightClass}`}
+            frameBorder={0}
+          />
+          <a
+            href={right}
+            target="_blank"
+            rel="noreferrer"
+            className="absolute top-2 right-2 text-xs bg-white/90 border px-2 py-1 rounded hover:bg-white"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Open
+          </a>
+        </div>
+        <button
+          className="w-full py-2 font-semibold bg-indigo-600 text-white hover:bg-indigo-700 transition-colors"
+          onClick={() => onSelect(1)}
+        >
+          Choose Right
+        </button>
       </div>
     </div>
   );
