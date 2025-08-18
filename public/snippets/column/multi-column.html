@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi Column</title>
+<style>
+  body { font-family: sans-serif; margin:0; padding:0; }
+  header { background: #FF5722; color: white; padding: 20px; text-align: center; }
+  section { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; }
+  .card { flex: 1 1 calc(33% - 20px); background: #f1f1f1; padding: 20px; border-radius: 8px; min-width: 200px; }
+</style>
+</head>
+<body>
+<header><h1>Multi-Column Layout</h1></header>
+<section>
+  <div class="card"><h2>Card 1</h2><p>Content in a grid column.</p></div>
+  <div class="card"><h2>Card 2</h2><p>Content in a grid column.</p></div>
+  <div class="card"><h2>Card 3</h2><p>Content in a grid column.</p></div>
+</section>
+</body>
+</html>
