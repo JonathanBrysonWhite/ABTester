@@ -4,16 +4,14 @@ import { encryptQuiz } from '@/lib/crypto';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { email, snippetPairs } = body;
+    const { email, snippets } = body;
 
-    if (!email || !snippetPairs) {
-      return NextResponse.json({ error: 'Missing email or snippetPairs' }, { status: 400 });
+    if (!email || !snippets) {
+      return NextResponse.json({ error: 'Missing email or snippets' }, { status: 400 });
     }
 
-    const payload = { email, snippets: snippetPairs };
-    console.log('Generating quiz payload:', payload);
+    const payload = { email, snippets: snippets };
     const encrypted = encryptQuiz(payload);
-
     const quizLink = `${encrypted}`;
 
     return NextResponse.json({ quizLink });

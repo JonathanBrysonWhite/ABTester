@@ -4,8 +4,7 @@ import { useRouter } from 'next/navigation';
 export default function HomePage() {
   const router = useRouter();
 
-  // Example default payload link (encrypted for your email)
-  const defaultQuizLink = '/quiz/<your-encrypted-default-payload>';
+  const defaultQuizLink = '/quiz/T%2B02aXovd%2BnlI8hqwufGoA%3D%3D%3AkwY67l4gUciqRKtRQVmHSU9vLUqBe6D%2FQCDtu8p%2BVREO5WhwSmFBNg1d7YbpejlEI7j%2BZZP772ApzUslJsS8XvtWLhLljOBqsCQkDvatHkS%2BFMdtfvglXAhEqC6lfu2Scf5TOR2s2L2ELEiSjnujOsPQ95mCQIZ711WXdWurLBrMNU5eZIO1P5JX4wDvUWt%2FUCEz7uZQ8ej8zmmrAa1Ex4byGP3BFsNq700mTLvKtHmHBiz8pptWF%2F0iXk85md5T19LzvEdToVBw4T5iYP6tfdfQkT9crb2KnjKeiz29wuXJ1vg7rNp2xSWzsqMkceN6VKlm7rnXs87G5ktNNqSQIrcniu98lK9tS%2BfFnmmmLn%2FMFTBg6%2FINAGXVnedjTxbTQMiimAl5vW6IYSjsrc9qvbMnun2%2FHEnMBOAgJNY63fkY%2FioBDGyiMrvsnvJDQRkPFa1SPMUacPu%2B4gG%2FErFHEFbfv6%2B3z4MVtjiICKH9UlDtfXAyMRE%2FHKQz683yGJ6LjjgszlAy9DA%2FL%2FCvaoSMddqmTnu1yPUKnnAINZWVFN7Ja%2Fmp8Sh4u%2FXmLzkOGbFQt0NmiPFU%2FHzwBGiMnBdE614YdAhw1CQtVu8GHGTBF3s3EeTnKiFouGR2aHYLUYpx';
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">

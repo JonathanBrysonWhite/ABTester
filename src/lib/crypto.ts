@@ -18,10 +18,8 @@ export function encryptQuiz(payload: any) {
 }
 
 export function decryptQuiz(encryptedPayload: string) {
-  console.log('Decrypting payload:', encryptedPayload);
   //base 64 decode the payload
   const decodedPayload = decodeURIComponent(encryptedPayload);
-  console.log('Decoded payload:', decodedPayload);
   const [ivStr, encryptedStr] = decodedPayload.split(':');
   if (!ivStr || !encryptedStr) throw new Error('Invalid payload format');
 

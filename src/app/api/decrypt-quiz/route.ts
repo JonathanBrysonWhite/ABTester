@@ -4,7 +4,6 @@ import { decryptQuiz } from '@/lib/crypto';
 export async function POST(req: NextRequest) {
   try {
     const { payload } = await req.json();
-    console.log('Decrypting quiz payload from API:', payload);
     if (!payload) {
       return NextResponse.json({ error: 'Missing payload' }, { status: 400 });
     }
