@@ -12,7 +12,7 @@ export default function QuizPage() {
   useEffect(() => {
     const fetchPayload = async () => {
       try {
-        const res = await fetch('/api/decrypt-quiz', {
+        const res = await fetch('/api/get-quiz', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ payload }),

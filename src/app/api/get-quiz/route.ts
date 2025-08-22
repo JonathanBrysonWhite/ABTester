@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { decryptQuiz } from '@/lib/crypto';
+import { isBase64 } from '@/lib/utils';
+import { getQuizPayload } from '@/lib/dblayer';
 
 export async function POST(req: NextRequest) {
   try {
@@ -7,9 +8,12 @@ export async function POST(req: NextRequest) {
     if (!payload) {
       return NextResponse.json({ error: 'Missing payload' }, { status: 400 });
     }
+    if (typeof payload !== 'string' || !isBase64(payload)) {
+      return NextResponse.json({ error: 'Invalid payload format' }, { status: 400});
+    }
 
-    const quizPayload = decryptQuiz(payload);
-
+    const quizPayload = await getQuizPayload(payload);
+    console.log('Decrypted payload:', quizPayload);
     return NextResponse.json({ quizPayload });
   } catch (e) {
     console.error('Failed to decrypt payload:', e);

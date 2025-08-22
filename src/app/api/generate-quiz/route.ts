@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { encryptQuiz } from '@/lib/crypto';
+import { generateCode } from '@/lib/code';
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,11 +9,14 @@ export async function POST(req: NextRequest) {
     if (!email || !snippets) {
       return NextResponse.json({ error: 'Missing email or snippets' }, { status: 400 });
     }
-
+    console.log('Received payload:', { email, snippets });
     const payload = { email, snippets: snippets };
-    const encrypted = encryptQuiz(payload);
-    const quizLink = `${encrypted}`;
-
+    const code = await generateCode(payload);
+    if (!code) {
+      return NextResponse.json({ error: 'Failed to generate code' }, { status: 400 });
+    }
+    
+    const quizLink = `${encodeURIComponent(code)}`;
     return NextResponse.json({ quizLink });
   } catch (e) {
     console.error(e);
