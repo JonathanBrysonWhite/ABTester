@@ -1,17 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { LuCopy } from "react-icons/lu";
-
-const snippetPairs = [
-    ['/density/dense.html', '/density/airy.html'],
-    ['/column/single-column.html', '/column/multi-column.html'],
-    ['/cta/bold-cta.html', '/cta/minimal-cta.html'],
-    ['/copy/casual.html', '/copy/formal.html'],
-    ['/media/hero-video.html', '/media/hero-image.html'],
-    ['/illustration/flat.html', '/illustration/realistic.html'],
-    ['/navigation/top-nav.html', '/navigation/side-nav.html'],
-    ['/social/prominent.html', '/social/subtle.html'],
-];
+import { snippetPairs } from '@/utils/utils';
 
 
 export default function GenerateQuizPage() {

@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
-import { QuizPayload, QuizDocument } from './models';
-import { generatePayloadHash } from './crypto';
+import { QuizPayload, QuizDocument } from '@/lib/models';
+import { generatePayloadHash } from '@/lib/crypto';
 
 let client: MongoClient | null = null;
 

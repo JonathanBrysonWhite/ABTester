@@ -1,6 +1,6 @@
 import { generateObjectHmac } from './crypto';
 import { QuizPayload } from './models';
-import { saveQuizPayload } from './dblayer';
+import { saveQuizPayload } from './dal/dblayer';
 
 export async function generateCode(payload: QuizPayload): Promise<string> {
     try {

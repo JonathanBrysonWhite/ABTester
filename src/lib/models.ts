@@ -11,3 +11,9 @@ export interface QuizDocument {
     createdAt: Date;
     hash: string;
 }
+
+export interface RateLimitConfig {
+    capacity: number;
+    refillRate: number;
+    expireSeconds?: number;
+}
